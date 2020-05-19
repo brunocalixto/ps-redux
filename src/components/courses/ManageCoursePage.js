@@ -66,7 +66,7 @@ ManageCoursePage.propTypes = {
   courses: PropTypes.array.isRequired,
   loadAuthors: PropTypes.func.isRequired,
   loadCourses: PropTypes.func.isRequired,
-  saveCourses: PropTypes.func.isRequired,
+  saveCourse: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired,
 };
 
@@ -77,7 +77,7 @@ export function getCourseBySlug(courses, slug) {
 function mapStateToProps(state, ownProps) {
   const slug = ownProps.match.params.slug;
   const course =
-    slug && slug.courses.length > 0
+    slug && state.courses.length > 0
       ? getCourseBySlug(state.courses, slug)
       : newCourse;
   return {
