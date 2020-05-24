@@ -6,3 +6,10 @@ export const CREATE_AUTHOR = "CREATE_AUTHOR";
 export const LOAD_AUTHORS_SUCCESS = "LOAD_AUTHORS_SUCCESS";
 export const BEGIN_API_CALL = "BEGIN_API_CALL";
 export const API_CALL_ERROR = "API_CALL_ERROR";
+
+// By convention, action that end id "_SUCCESS" are assumed to have been the result of completed
+// API call. But since we're doing an optimistic delete, we're hiding loading state.
+// So this action name deliberately omits the "_SUCCESS" suffix.
+// If it had one, our apiCallsInProgress counter would be decrement below zero
+// because we're not incrementing the number of apiCallInProgress when the delete request begins.
+export const DELETE_COURSE_OPTIMISTIC = "DELETE_COURSE_OPTIMISTIC";
